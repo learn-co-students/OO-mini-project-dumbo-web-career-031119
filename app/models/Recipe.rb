@@ -24,7 +24,8 @@ class Recipe
   end
 
   def self.most_popular
-    Recipe.all.sort_by {|recipe| RecipeCard.all.find_all{|recipecard| recipecard.recipe == recipe}.length}.last
+    # Recipe.all.sort_by {|recipe| RecipeCard.all.find_all{|recipecard| recipecard.recipe == recipe}.length}.last
+    Recipe.all.max_by {|recipe| recipe.users.length}
   end
 
   def ingredients
